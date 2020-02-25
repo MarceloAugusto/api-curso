@@ -7,7 +7,7 @@ class AddressSchema extends Schema {
     this.create('clients', (table) => {
       table.increments()
       table.integer('user_id').unsigned().references('id').inTable('users').notNullable().onDelete('CASCADE')
-      table.string('address', 200)
+      table.string('address', 200).notNullable()
       table.integer('age').unsigned()
       table.integer('weight').unsigned()
       table.timestamps()
