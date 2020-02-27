@@ -32,3 +32,6 @@ Route.resource('roles', 'RoleController').apiOnly().middleware(['auth:jwt', 'is:
 Route.resource('products', 'ProductController').apiOnly().middleware(['auth:jwt', 'is:manager']).validator(new Map([
   [['products.store'], ['Product']], [['products.update'], ['Product']]
 ]))
+
+Route.get('images/:name', 'ImageController.show')
+Route.post('/images', 'ImageController.store').middleware(['auth:jwt', 'is:manager'])
