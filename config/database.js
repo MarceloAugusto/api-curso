@@ -51,11 +51,23 @@ module.exports = {
   mysql: {
     client: 'mysql',
     connection: {
-      host: Env.get('DB_HOST', 'localhost'),
-      port: Env.get('DB_PORT', ''),
-      user: Env.get('DB_USER', 'root'),
-      password: Env.get('DB_PASSWORD', ''),
-      database: Env.get('DB_DATABASE', 'adonis')
+      host: Env.get('DB_HOST'),
+      port: Env.get('DB_PORT'),
+      user: Env.get('DB_USER'),
+      password: Env.get('DB_PASSWORD'),
+      database: Env.get('DB_DATABASE')
+    },
+    debug: Env.get('DB_DEBUG', false)
+  },
+
+  oldMysql: {
+    client: 'mysql',
+    connection: {
+      host: Env.get('DB_HOST2'),
+      port: Env.get('DB_PORT2'),
+      user: Env.get('DB_USER2'),
+      password: Env.get('DB_PASSWORD2'),
+      database: Env.get('DB_DATABASE2')
     },
     debug: Env.get('DB_DEBUG', false)
   },

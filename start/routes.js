@@ -28,3 +28,7 @@ Route.resource('permissions', 'PermissionController').apiOnly().middleware(['aut
 Route.resource('roles', 'RoleController').apiOnly().middleware(['auth:jwt', 'is:manager']).validator(new Map([
   [['roles.store'], ['NameSlug']], [['roles.update'], ['NameSlug']]
 ]))
+
+Route.resource('products', 'ProductController').apiOnly().middleware(['auth:jwt', 'is:manager']).validator(new Map([
+  [['products.store'], ['Product']], [['products.update'], ['Product']]
+]))
