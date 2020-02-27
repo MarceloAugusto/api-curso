@@ -1,6 +1,7 @@
 'use strict'
 
 const Product = use('App/Models/Product')
+const Logger = use('Logger')
 
 class ProductController {
   async index () {
@@ -19,7 +20,13 @@ class ProductController {
       'quantity'
     ])
 
-    return await Product.create(data)
+    const product = await Product.create(data)
+
+    Logger.info('Produto adicionado!',
+      { data: product.toJSON() }
+    )
+
+    return product
   }
 
   async update ({ params, request }) {
