@@ -13,11 +13,11 @@ Route.resource('clients', 'ClientController').apiOnly().middleware(['auth:jwt', 
   [['clients.store'], ['Client']], [['clients.update'], ['Client']]
 ]))
 
-Route.resource('exercises', 'ExerciseController').apiOnly().middleware(['auth:jwt', 'can:gerenc_exercises']).validator(new Map([
+Route.resource('exercises', 'ExerciseController').apiOnly().middleware(['auth:jwt', 'can:gerenc_exercises', 'audit']).validator(new Map([
   [['exercises.store'], ['Exercise']], [['exercises.update'], ['Exercise']]
 ]))
 
-Route.resource('trainings', 'TrainingController').apiOnly().middleware(['auth:jwt', 'can:gerenc_trainings']).validator(new Map([
+Route.resource('trainings', 'TrainingController').apiOnly().middleware(['auth:jwt', 'can:gerenc_trainings', 'audit']).validator(new Map([
   [['trainings.store'], ['Training']], [['trainings.update'], ['Training']]
 ]))
 
@@ -32,6 +32,3 @@ Route.resource('roles', 'RoleController').apiOnly().middleware(['auth:jwt', 'is:
 Route.resource('products', 'ProductController').apiOnly().middleware(['auth:jwt', 'is:manager']).validator(new Map([
   [['products.store'], ['Product']], [['products.update'], ['Product']]
 ]))
-
-Route.get('images/:name', 'ImageController.show')
-Route.post('/images', 'ImageController.store').middleware(['auth:jwt', 'is:manager'])
